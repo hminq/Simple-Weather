@@ -17,3 +17,12 @@ local.properties
 /.idea/vcs.xml
 COMMIT_CONVENTION.md
 /.idea/markdown.xml
+
+# Cursor AI
+.cursor/
+.cursorignore
+cursor/
+.cursorrules
+
+# Project Documentation
+PROJECT_CONTEXT.md
