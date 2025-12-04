@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white_10">#f1f1f1</color>
-    <color name="white_20">#dbdbdb</color>
-    <color name="white_30">#bababa</color>
-    <color name="white_40">#9d9d9d</color>
-    <color name="black_10">#000000</color>
-    <color name="black_20">#1a1a1a</color>
-    <color name="black_30">#2c2c2c</color>
-    <color name="black_40">#3f3f3f</color>
+    <color name="white_10">#eaeef8</color>
+    <color name="white_20">#d1daee</color>
+    <color name="white_30">#bac9e5</color>
+    <color name="white_40">#a7b6d3</color>
+    <color name="white_50">#95a1ba</color>
+    <color name="white_100">#FFFFFF</color>
+    <color name="black_100">#000000</color>
+    <color name="black_50">#2f333b</color>
+    <color name="black_40">#414650</color>
+    <color name="black_30">#585f6d</color>
+    <color name="black_20">#697181</color>
+    <color name="black_10">#818b9e</color>
 </resources>

@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+
     kotlin("plugin.serialization") version "2.0.21"
 }
 
@@ -30,6 +33,9 @@ android {
             )
         }
     }
+    buildFeatures {
+        dataBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -40,12 +46,19 @@ android {
 }
 
 dependencies {
+    // Preference datastore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    //Hilt for DI
+    implementation("com.google.dagger:hilt-android:2.57.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.57.1")
     // SplashScreen
     implementation(libs.androidx.core.splashscreen)
     // Moshi for JSON parsing
     implementation(libs.converter.moshi)
     // Retrofit for API calling
     implementation(libs.retrofit2.retrofit)
+
     // Views/Fragments integration
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.navigation.ui)
@@ -68,3 +81,4 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+

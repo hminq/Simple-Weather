@@ -1,28 +1,35 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.SimpleWeather" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white_10</item>
-        <item name="colorPrimaryVariant">@color/white_20</item>
-        <item name="colorOnPrimary">@color/black_10</item>
-        <item name="colorOnPrimaryFixedVariant">@color/black_20</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/white_30</item>
-        <item name="colorSecondaryVariant">@color/white_40</item>
-        <item name="colorOnSecondary">@color/black_30</item>
-        <item name="colorOnSecondaryFixedVariant">@color/black_40</item>
+    <style name="Theme.SimpleWeather" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/black_100</item>
+        <item name="colorOnPrimary">@color/white_100</item>
+        <item name="android:colorBackground">@color/white_100</item>
+<!--        <item name="colorOnBackground">@color/black_100</item>-->
+<!--        <item name="colorSurface">@color/white_20</item>-->
+<!--        <item name="colorOnSurface">@color/black_50</item>-->
+        <item name="colorSecondary">@color/black_50</item>
+<!--        <item name="colorOnSecondary">@color/black_50</item>-->
         <item name="android:fontFamily">@font/project_font</item>
         <item name="fontFamily">@font/project_font</item>
-        <item name="background">@color/white_10</item>
     </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/black_10</item>
+        <item name="windowSplashScreenBackground">@color/black_100</item>
 
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
 
-        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="windowSplashScreenAnimationDuration">2000</item>
 
         <item name="postSplashScreenTheme">@style/Theme.SimpleWeather</item>
+    </style>
+
+    <!-- Style for toggle button to have corner radius on all 4 corners -->
+    <style name="ShapeAppearance.ToggleButton" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerSizeBottomLeft">8dp</item>
+        <item name="cornerSizeBottomRight">8dp</item>
     </style>
 </resources>

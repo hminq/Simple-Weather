@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Simple Weather</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save_data_err">Fail to save data to local storage</string>
+    <string name="get_weather_error">Fail to get weather data</string>
+    <string name="location_access_title">Location Access Required</string>
+    <string name="weather_title">Weather</string>
+    <string name="setting_title">Setting</string>
+    <string name="location_access_later">Maybe later</string>
+    <string name="location_access_button">Grant location permission</string>
+    <string name="location_access_desc">/* To fetch real-time weather data for your current location, this app need access to your device\'s location service */</string>
+    <string name="location_permission_rationale">Location permission is required to show weather data for your current location. Please grant the permission to continue.</string>
+    <string name="location_permission_settings_message">Location permission has been denied. To enable it, please go to Settings and grant location permission for this app.</string>
+    <string name="grant_permission">Grant Permission</string>
+    <string name="open_settings">Open Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="local_storage_exception">Error saving data</string>
+    <string name="settings_saved_success">Settings saved successfully</string>
+    <string name="settings_load_error">Failed to load settings</string>
 </resources>

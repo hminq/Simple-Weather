@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.SettingFragment"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/tv_setting_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.05"
+            android:text="@string/setting_title"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="23sp"/>
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/ic_back"
+            app:backgroundTint="?attr/colorPrimary" />
+
+        <ScrollView
+            android:id="@+id/sv_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_setting_title"
+            android:layout_marginTop="20dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tv_setting_pref"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Preferences"
+                    android:textColor="?attr/colorSecondary"
+                    android:textSize="21sp" />
+
+                <ImageView
+                    android:id="@+id/iv_temp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_setting_pref"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_setting_image"
+                    app:backgroundTint="@null"
+                    android:src="@drawable/ic_setting_temp"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/tv_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/iv_temp"
+                    app:layout_constraintTop_toTopOf="@id/iv_temp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_temp"
+                    android:layout_marginStart="20dp"
+                    android:text="Temperature"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="18sp"/>
+
+                <View
+                    android:id="@+id/divider_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/colorSurface"
+                    app:layout_constraintTop_toBottomOf="@id/iv_temp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="12dp" />
+
+                <FrameLayout
+                    android:id="@+id/toggle_group_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_toggle_group"
+                    android:padding="4dp"
+                    app:layout_constraintTop_toBottomOf="@id/divider_temp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="1.0"
+                    android:layout_marginTop="12dp">
+
+                    <!-- Background indicator - chỉ phần này được animate -->
+                    <View
+                        android:id="@+id/toggle_indicator"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_toggle_indicator"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+
+                        <Button
+                            android:id="@+id/btn_celsius"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:minHeight="40dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="Celsius"
+                            android:textColor="@color/toggle_button_text_color"
+                            android:textSize="13sp"
+                            android:background="@android:color/transparent"
+                            app:backgroundTint="?attr/colorOnPrimary"
+                            android:stateListAnimator="@null"/>
+
+                        <Button
+                            android:id="@+id/btn_fahrenheit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:minHeight="40dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="Fahrenheit"
+                            android:textColor="@color/toggle_button_text_color"
+                            android:textSize="13sp"
+                            android:background="@android:color/transparent"
+                            app:backgroundTint="?attr/colorOnPrimary"
+                            android:stateListAnimator="@null" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- Wind Speed Setting -->
+                <ImageView
+                    android:id="@+id/iv_wind"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toggle_group_temp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/bg_setting_image"
+                    app:backgroundTint="@null"
+                    android:src="@drawable/ic_windspeed"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/tv_wind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/iv_wind"
+                    app:layout_constraintTop_toTopOf="@id/iv_wind"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_wind"
+                    android:layout_marginStart="20dp"
+                    android:text="Wind Speed"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="18sp"/>
+
+                <View
+                    android:id="@+id/divider_wind"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/colorSurface"
+                    app:layout_constraintTop_toBottomOf="@id/iv_wind"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="12dp" />
+
+                <FrameLayout
+                    android:id="@+id/toggle_group_wind"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_toggle_group"
+                    android:padding="4dp"
+                    app:layout_constraintTop_toBottomOf="@id/divider_wind"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="1.0"
+                    android:layout_marginTop="12dp">
+
+                    <!-- Background indicator - chỉ phần này được animate -->
+                    <View
+                        android:id="@+id/toggle_indicator_wind"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_toggle_indicator"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+
+                        <Button
+                            android:id="@+id/btn_kmh"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:minHeight="40dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="km/h"
+                            android:textColor="@color/toggle_button_text_color"
+                            android:textSize="13sp"
+                            android:background="@android:color/transparent"
+                            app:backgroundTint="?attr/colorOnPrimary"
+                            android:stateListAnimator="@null"/>
+
+                        <Button
+                            android:id="@+id/btn_mph"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:minHeight="40dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="mph"
+                            android:textColor="@color/toggle_button_text_color"
+                            android:textSize="13sp"
+                            android:background="@android:color/transparent"
+                            app:backgroundTint="?attr/colorOnPrimary"
+                            android:stateListAnimator="@null" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_setting_notification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/toggle_group_wind"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="40dp"
+                    android:text="Notifications"
+                    android:textColor="?attr/colorSecondary"
+                    android:textSize="21sp" />
+
+                <ImageView
+                    android:id="@+id/iv_noti_daily"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_setting_notification"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_setting_image"
+                    app:backgroundTint="@null"
+                    android:src="@drawable/ic_noti_daily"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/tv_noti_daily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/iv_noti_daily"
+                    app:layout_constraintTop_toTopOf="@id/iv_noti_daily"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_noti_daily"
+                    android:layout_marginStart="20dp"
+                    android:text="Daily Summary"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switch_noti_daily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/iv_noti_daily"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_noti_daily"
+                    android:thumbTint="?attr/colorPrimary"
+                    app:trackTint="@color/switch_track_tint"
+                    android:checked="true" />
+
+                <View
+                    android:id="@+id/divider_noti"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/colorSurface"
+                    app:layout_constraintTop_toBottomOf="@id/iv_noti_daily"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="12dp" />
+
+                <ImageView
+                    android:id="@+id/iv_noti_danger"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_noti"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_setting_image"
+                    app:backgroundTint="@null"
+                    android:src="@drawable/ic_noti_danger"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/tv_noti_danger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/iv_noti_danger"
+                    app:layout_constraintTop_toTopOf="@id/iv_noti_danger"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_noti_danger"
+                    android:layout_marginStart="20dp"
+                    android:text="Danger Alert"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switch_noti_danger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/iv_noti_danger"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_noti_danger"
+                    android:thumbTint="?attr/colorPrimary"
+                    app:trackTint="@color/switch_track_tint"
+                    android:checked="false" />
+
+                <TextView
+                    android:id="@+id/tv_setting_about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/iv_noti_danger"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="40dp"
+                    android:text="About"
+                    android:textColor="?attr/colorSecondary"
+                    android:textSize="21sp" />
+
+                <ImageView
+                    android:id="@+id/iv_about_version"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_setting_about"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_setting_image"
+                    app:backgroundTint="@null"
+                    android:src="@drawable/ic_info"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/tv_about_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/iv_about_version"
+                    app:layout_constraintTop_toTopOf="@id/iv_about_version"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_about_version"
+                    android:layout_marginStart="20dp"
+                    android:text="App Version"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/tv_app_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/iv_about_version"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_about_version"
+                    android:layout_marginStart="20dp"
+                    android:text="1.0.0"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="18sp"/>
+
+                <View
+                    android:id="@+id/divider_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/colorSurface"
+                    app:layout_constraintTop_toBottomOf="@id/iv_about_version"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="12dp" />
+
+                <ImageView
+                    android:id="@+id/iv_about_source"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_about"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_setting_image"
+                    app:backgroundTint="@null"
+                    android:src="@drawable/ic_sourcecode"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/tv_about_source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/iv_about_source"
+                    app:layout_constraintTop_toTopOf="@id/iv_about_source"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_about_source"
+                    android:layout_marginStart="20dp"
+                    android:text="Source Code"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="18sp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
