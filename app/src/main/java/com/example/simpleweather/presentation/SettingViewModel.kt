@@ -8,11 +8,8 @@ import com.example.simpleweather.domain.entity.UserSetting
 import com.example.simpleweather.domain.exception.DomainException
 import com.example.simpleweather.domain.usecase.GetUserSettingUseCase
 import com.example.simpleweather.domain.usecase.SetUserSettingUseCase
-import com.example.simpleweather.domain.usecase.UseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
-import jakarta.inject.Named
-import kotlin.jvm.JvmSuppressWildcards
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,12 +20,8 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class SettingViewModel @Inject constructor(
-    @JvmSuppressWildcards
-    @Named("getUserSetting")
-    private val getUserSettingUseCase: UseCase<GetUserSettingUseCase.Params, GetUserSettingUseCase.Output>,
-    @JvmSuppressWildcards
-    @Named("setUserSetting")
-    private val setUserSettingUseCase: UseCase<SetUserSettingUseCase.Params, SetUserSettingUseCase.Output>
+    private val getUserSettingUseCase: GetUserSettingUseCase,
+    private val setUserSettingUseCase: SetUserSettingUseCase
 ) : ViewModel() {
 
     // UI State
@@ -57,12 +50,11 @@ class SettingViewModel @Inject constructor(
     private fun loadUserSettings() {
         viewModelScope.launch {
             _uiState.value = SettingUiState.Loading
-            val output = getUserSettingUseCase(GetUserSettingUseCase.Params(Unit))
+            val userSetting = getUserSettingUseCase.invoke()
 
             // Observe the Flow from UseCase
             // UseCase already handles exception and throws DomainException
-            output.userSetting
-                .onEach { setting ->
+            userSetting.onEach { setting ->
                     _userSetting.value = setting
                     _uiState.value = SettingUiState.Success(setting)
                     _error.value = null
@@ -123,7 +115,7 @@ class SettingViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 // UseCase handles exception and throws DomainException
-                setUserSettingUseCase(SetUserSettingUseCase.Params(userSetting))
+                setUserSettingUseCase.invoke(userSetting)
                 // Setting will be updated automatically via Flow from repository
                 _successMessage.value = "Settings saved successfully"
                 _error.value = null
