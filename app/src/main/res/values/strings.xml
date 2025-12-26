@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Simple Weather</string>
+    <string name="general_error">Error</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save_data_err">Fail to save data to local storage</string>
     <string name="get_weather_error">Fail to get weather data</string>
@@ -17,4 +18,5 @@
     <string name="local_storage_exception">Error saving data</string>
     <string name="settings_saved_success">Settings saved successfully</string>
     <string name="settings_load_error">Failed to load settings</string>
+    <string name="settings_set_error">Failed to load settings</string>
 </resources>
