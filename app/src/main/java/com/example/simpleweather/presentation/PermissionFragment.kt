@@ -18,7 +18,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.simpleweather.R
 import com.example.simpleweather.databinding.FragmentPermissionBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PermissionFragment : Fragment() {
     companion object {
         private const val TAG: String = "FRAGMENT_PERMISSION"

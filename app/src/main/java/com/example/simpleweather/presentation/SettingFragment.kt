@@ -18,6 +18,7 @@ import com.example.simpleweather.databinding.FragmentSettingBinding
 import com.example.simpleweather.domain.entity.SpeedType
 import com.example.simpleweather.domain.entity.Temperature
 import com.example.simpleweather.domain.entity.UserSetting
+import com.example.simpleweather.domain.exception.DomainException
 import com.example.simpleweather.presentation.utils.ToggleSwitchHelper
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -158,7 +159,7 @@ class SettingFragment : Fragment() {
         isUpdatingFromViewModel = false
     }
 
-    private fun showError(exception: com.example.simpleweather.domain.exception.DomainException) {
+    private fun showError(exception: DomainException) {
         val errorMessage = exception.messageResId?.let { 
             getString(it) 
         } ?: exception.message ?: getString(R.string.settings_load_error)
@@ -185,13 +186,11 @@ class SettingFragment : Fragment() {
             toggleIndicator = binding.toggleIndicator,
             button1 = binding.btnCelsius,
             button2 = binding.btnFahrenheit,
-            isFirstSelected = true, // Celsius mặc định
+            isFirstSelected = true, // default is Celcius
             onSelectionChanged = { isCelsius ->
                 onTemperatureUnitChanged(isCelsius)
             }
         )
-        // Don't setup immediately, wait for data from ViewModel
-        // Setup will be called after data is loaded
     }
 
     private fun setupWindSpeedSwitch() {
@@ -200,7 +199,7 @@ class SettingFragment : Fragment() {
             toggleIndicator = binding.toggleIndicatorWind,
             button1 = binding.btnKmh,
             button2 = binding.btnMph,
-            isFirstSelected = true, // km/h mặc định
+            isFirstSelected = true, // default is km/h
             onSelectionChanged = { isKmh ->
                 onWindSpeedUnitChanged(isKmh)
             }
@@ -251,13 +250,13 @@ class SettingFragment : Fragment() {
 
     private fun setupSourceCodeClick() {
         val githubUrl = "https://github.com/hminq/Simple-Weather"
-        
-        // Click vào TextView "Source Code"
+
+        // Click TextView "Source Code"
         binding.tvAboutSource.setOnClickListener {
             openUrl(githubUrl)
         }
         
-        // Click vào ImageView icon cũng được
+        // Click ImageView icon
         binding.ivAboutSource.setOnClickListener {
             openUrl(githubUrl)
         }

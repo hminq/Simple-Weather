@@ -14,7 +14,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.simpleweather.R
 import com.example.simpleweather.databinding.FragmentWeatherBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WeatherFragment : Fragment() {
     companion object {
         private const val TAG: String = "FRAGMENT_WEATHER"
